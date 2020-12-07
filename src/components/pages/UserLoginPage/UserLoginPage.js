@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import { Redirect } from 'react-router-dom'
 import background from "../../../img/baloon.jpg"
 import "../UserLoginPage.css"
-
+import url from "../../API";
 const mapStateToProps = state => {
     return{
         username: state.username,
@@ -50,12 +50,12 @@ class UserLoginPage extends Component {
                 "isAdmin": false
             })
         };
-        fetch('http://192.168.0.106:5000/login', requestOptions)
+        fetch(url+'/login', requestOptions)
             .then(response => response.json())
             .then(data => {
                 if(!data['message']){
 
-                    fetch('http://192.168.0.106:5000/addrefresh', {
+                    fetch(url+'/addrefresh', {
                         method: 'POST',
                         headers: { 'Authorization': 'Bearer '+ data["refresh_token"]  }
                     })

@@ -1,0 +1,122 @@
+.contact-adder{
+    margin: 50px auto;
+    width: 50%;
+    background-color: white;
+    box-shadow: 0 4px 13px #dadada;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.card-delete-icon{
+    position: absolute;
+    left: 15px;
+    cursor: pointer;
+    color: #880a1f;
+    display: none;
+}
+.card-element:hover .card-delete-icon{
+    display: inline;
+}
+.contact-add-header{
+    font-size: 27px;
+    margin: 25px 43px;
+    color: #212121;
+}
+.contact-card-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.card-element{
+    width: 100%;
+    margin: 15px 0;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    position: relative;
+    font-size: 11px;
+}
+.contact-select{
+    user-select: none;
+    position: relative;
+    width: 20%;
+    height: 60%;
+    border-radius: 50px;
+    background-color: #880a1f;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-size: 11px;
+    cursor: pointer;
+}
+.dropdown-contact{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 60%;
+}
+.select-options{
+    padding: 10px 0;
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0;
+    top: 27px;
+    right: 0;
+    width: 85%;
+    color: #212121;
+    z-index: 1;
+    border: 1px solid #c4c4c4;
+    border-radius: 15px;
+    background-color: white;
+
+}
+.contact-select-option{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    margin: 1px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+}
+.contact-select-option:hover{
+    width: 98%;
+    background-color: #e8e8e8;
+}
+.show-select{
+    display: flex;
+}
+.contact-add-header-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+}
+.contact-plus{
+    color: #880a1f;
+    cursor: pointer;
+}
+.contact-choose-input-container{
+    width: 60%;
+    height: 50%;
+}
+.contact-choose-input-single{
+    width: 90%;
+    font-size: 16px;
+    height: 16%;
+    margin-top: -3px;
+    padding: 15px;
+    outline: #880a1f;
+}
+.contact-choose-input-single:focus{
+    border: 1px solid #880a1f;
+}

@@ -5,7 +5,7 @@
 }
 .input-container-location-add{
     width: 100%;
-    height: 280px;
+    height: 240px;
     padding-top: 20px;
     margin-top: 35px;
     background-color: white;
@@ -15,12 +15,62 @@
 .location-left-container{
     width: 40%;
 }
+.active-button{
+    background-color: #630816;
+    color: #f8f8f8;
+}
 .location-choose{
     width: 100%;
     height: 280px;
-    padding-top: 20px;
+    padding-top: 10px;
     margin-top: 35px;
     background-color: white;
     box-shadow: 0 4px 13px #dadada;
     border-radius: 25px;
+}
+
+.location-choose-header{
+    font-size: 27px;
+    margin: 15px 33px;
+    color: #212121;
+}
+.location-choose-data-header{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    color: #630816;
+    font-size: 20px;
+    font-weight: bold;
+    border-bottom: 1px solid;
+}
+.location-choose-data-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 160px;
+    margin-top: 17px;
+}
+.location-choose-data-scroll{
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.location-choose-item{
+    width: 100%;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.location-choose-item > p,
+.location-choose-data-header > p{
+    width: 30%;
+    font-weight: bold;
+}
+.location-choose-item:hover{
+    background-color:  rgba(0,0,0,.075);
+}
+.capitalize{
+    text-transform: capitalize;
 }

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-import { Route, Redirect} from 'react-router-dom'
+import {Route, Redirect} from 'react-router-dom'
 import "../UserHome.css";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {
@@ -14,14 +14,33 @@ import {
     faUserPlus,
     faUsers,
     faAngleRight,
-    faSignal, faCogs, faNewspaper, faSearch, faChartLine,
+    faSignal,
+    faCogs,
+    faNewspaper,
+    faSearch,
+    faChartLine,
+    faAddressCard,
+    faIdBadge,
+    faDollarSign,
+    faCube,
+    faMoneyBillAlt,
+    faWallet, faGlobeEurope, faPhoneVolume, faBuilding
 } from '@fortawesome/free-solid-svg-icons'
 import TopNav from "../../TopNav";
 import LeftNavIcon from "../../LeftNavIcon";
 import LeftSubIcon from "../../LeftSubIcon";
 import AddLocationType from "../AddLocationType/AddLocationType"
 import AddLocation from "../AddLocation/AddLocation";
-
+import AddContact from "../AddContact";
+import AddContactType from "../AddContactType/AddContactType";
+import TariffType from "../TariffType/TariffType";
+import AddPaymentMethod from "../AddPaymentMethod/AddPaymentMethod";
+import AddWithdrawMethod from "../AddWithdrawMethod/AddWithdrawMethod";
+import url from "../../API";
+import AddIntercomTariff from "../Tariffs/AddIntercomTariff";
+import AddTvTariff from "../Tariffs/AddTVTariff";
+import AddVoipTariff from "../Tariffs/AddVOIPTariff";
+import AddInternetTariff from "../Tariffs/AddInternetTariff";
 const mapStateToProps = state => {
     return {
         loggedIn: state.loggedIn,
@@ -173,25 +192,54 @@ class UserHome extends Component {
                         {
                             name: "Internet",
                             icon: faAngleRight,
-                            subList: []
+                            subList: [
+                                {
+                                    name: "Add Internet Tariff",
+                                    icon: faGlobeEurope,
+                                    url: "/admin/add-internet-tariff"
+                                }
+                            ]
                         },
                         {
                             name: "TV",
                             icon: faAngleRight,
-                            subList: []
+                            subList: [
+                                {
+                                    name: "Add TV Tariff",
+                                    icon: faTv,
+                                    url: "/admin/add-tv-tariff"
+                                }
+                            ]
                         },
                         {
                             name: "VOIP",
                             icon: faAngleRight,
-                            subList: []
+                            subList: [
+                                {
+                                    name: "Add VOIP Tariff",
+                                    icon: faPhoneVolume,
+                                    url: "/admin/add-voip-tariff"
+                                }
+                            ]
+                        },
+                        {
+                            name: "Intercom",
+                            icon: faAngleRight,
+                            subList: [
+                                {
+                                    name: "Add Intercom Tariff",
+                                    icon: faBuilding,
+                                    url: "/admin/add-intercom-tariff"
+                                }
+                            ]
                         },
                         {
                             name: "Locations",
                             icon: faAngleRight,
                             subList: [
                                 {
-                                name: "Add Location Type",
-                                icon: faGlobeAmericas,
+                                    name: "Add Location Type",
+                                    icon: faGlobeAmericas,
                                     url: "/admin/addlocationtype"
                                 },
                                 {
@@ -199,7 +247,23 @@ class UserHome extends Component {
                                     icon: faMapMarkedAlt,
                                     url: "/admin/addlocation"
                                 }
-                                ]
+                            ]
+                        },
+                        {
+                            name: "Contacts",
+                            icon: faAngleRight,
+                            subList: [
+                                {
+                                    name: "Add Contacts Type",
+                                    icon: faAddressCard,
+                                    url: "/admin/addcontacttype"
+                                },
+                                {
+                                    name: "Add Contacts",
+                                    icon: faIdBadge,
+                                    url: "/admin/addcontact"
+                                }
+                            ]
                         },
                         {
                             name: "Payment Systems",
@@ -214,7 +278,25 @@ class UserHome extends Component {
                         {
                             name: "Others",
                             icon: faAngleRight,
-                            subList: []
+                            subList: [
+                                {
+                                    name: "Tariff Type",
+                                    icon: faCube,
+                                    url: "/admin/tarifftype"
+                                },
+                                {
+                                    name: "Payment Method",
+                                    icon: faWallet,
+                                    url: "/admin/add-payment-method"
+                                }
+                                ,
+                                {
+                                    name: "Withdraw Method",
+                                    icon: faMoneyBillAlt,
+                                    url: "/admin/add-withdraw-method"
+                                }
+
+                            ]
                         }
                     ]
                 },
@@ -323,11 +405,11 @@ class UserHome extends Component {
             method: 'POST',
             headers: {'Authorization': "Bearer " + this.props.accessToken}
         };
-        fetch('http://192.168.0.106:5000/logout', requestOptions)
+        fetch(url+'/logout', requestOptions)
             .then(response => response.json())
             .then(() => {
                 requestOptions['headers'] = {'Authorization': "Bearer " + this.props.refreshToken};
-                fetch('http://192.168.0.106:5000/refreshlogout', requestOptions)
+                fetch(url+'/refreshlogout', requestOptions)
                     .then(response => response.json())
                     .then(data => {
 
@@ -394,8 +476,17 @@ class UserHome extends Component {
 
 
                     <div className={"screen-main-right"}>
-                            <Route path={"/admin/addlocationtype"} component={AddLocationType}/>
-                            <Route path={"/admin/addlocation"} component={AddLocation}/>
+                        <Route path={"/admin/addlocationtype"} component={AddLocationType}/>
+                        <Route path={"/admin/addlocation"} component={AddLocation}/>
+                        <Route path={"/admin/addcontacttype"} component={AddContactType}/>
+                        <Route path={"/admin/addcontact"} component={AddContact}/>
+                        <Route path={"/admin/tarifftype"} component={TariffType}/>
+                        <Route path={"/admin/add-payment-method"} component={AddPaymentMethod}/>
+                        <Route path={"/admin/add-withdraw-method"} component={AddWithdrawMethod}/>
+                        <Route path={"/admin/add-intercom-tariff"} component={AddIntercomTariff}/>
+                        <Route path={"/admin/add-tv-tariff"} component={AddTvTariff}/>
+                        <Route path={"/admin/add-voip-tariff"} component={AddVoipTariff}/>
+                        <Route path={"/admin/add-internet-tariff"} component={AddInternetTariff}/>
                     </div>
                 </div>
 

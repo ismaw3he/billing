@@ -1,0 +1,99 @@
+.input-container-shorter{
+    width: 40%;
+    height: 260px;
+    margin-top: 35px;
+    background-color: white;
+    box-shadow: 0 4px 13px #dadada;
+    border-radius: 25px;
+}
+.multiple-input-container{
+    width: 40%;
+    height: 0%;
+    margin-top: 35px;
+    background-color: white;
+    box-shadow: 0 4px 13px #dadada;
+    border-radius: 25px;
+}
+.multiple-input-container-single{
+    box-sizing: border-box;
+    padding: 10px 35px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+}
+.input{
+    outline: none;
+}
+.input:focus{
+    border: 2px solid #880a1f;
+}
+.page-right-data-container{
+    width: 45%;
+    height: 80vh;
+    margin: 37px 100px 0 0;
+    background-color: white;
+    /*box-shadow: 0 4px 13px #dadada;*/
+    border-radius: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.page-right-data-card{
+    width: 40%;
+    height: 30%;
+    margin: 5px 30px 30px 30px;
+    background-color: white;
+    box-shadow: 0 4px 13px #dadada;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.tariff-name{
+    font-size: 45px;
+    margin: 5px 25px -5px 25px;
+    color: #880a1f;
+}
+.tariff-price{
+    font-size: 18px;
+    margin: 1px 30px;
+    color: #44a047;
+    font-weight: bold;
+}
+.tariff-card-bottom{
+    width: 87%;
+    display: flex;
+    flex-direction: column;
+    color: #676767;
+    font-size: 15px;
+    margin: 15px 0 5px 30px;
+    height: 60px;
+    justify-content: space-between;
+}
+.tariff-card-buttons-container{
+    align-self: flex-end;
+}
+.internet-select{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.internet-mb{
+    width: 75%;
+}
+
+.internet-dropdown{
+    height: 44px;
+    width: 15%;
+    background-color: white;
+    color: #880a1f;
+    border: 2px solid;
+}
+.multiple-input{
+    margin: 10px 0;
+}

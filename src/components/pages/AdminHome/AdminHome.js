@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import { Redirect } from 'react-router-dom'
-
+import url from "../../API";
 const mapStateToProps = state => {
     return{
         loggedIn: state.loggedIn,
@@ -39,11 +39,11 @@ class AdminHome extends Component {
             method: 'POST',
             headers: { 'Authorization': "Bearer "+ this.props.accessToken }
         };
-        fetch('http://192.168.0.106:5000/logout', requestOptions)
+        fetch(url+'/logout', requestOptions)
             .then(response => response.json())
             .then(data => {
                 requestOptions['headers']={ 'Authorization': "Bearer "+ this.props.refreshToken };
-                fetch('http://192.168.0.106:5000/refreshlogout', requestOptions)
+                fetch(url+'/refreshlogout', requestOptions)
                     .then(response => response.json())
                     .then(data => {
 

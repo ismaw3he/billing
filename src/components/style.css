@@ -1,0 +1,47 @@
+.add-contact-type-page{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.contact-input-container{
+    height: 160px;
+}
+.cards-scroll-short{
+    overflow-y: auto;
+    height: 100%;
+    width: 60%;
+    list-style: none;
+}
+.short{
+    width: 20%;
+}
+
+.input-container-shorter{
+    width: 40%;
+    height: 260px;
+    margin-top: 35px;
+    background-color: white;
+    box-shadow: 0 4px 13px #dadada;
+    border-radius: 25px;
+}
+.multiple-input-container{
+    width: 40%;
+    margin-top: 35px;
+    background-color: white;
+    box-shadow: 0 4px 13px #dadada;
+    border-radius: 25px;
+}
+.multiple-input-container-single{
+    box-sizing: border-box;
+    padding: 10px 35px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+}
+.input{
+    outline: none;
+}
+.input:focus{
+    border: 2px solid #880a1f;
+}

@@ -3,13 +3,13 @@ import "./style.css"
 import {faEdit, faTrashAlt} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {ModalComponent, ModalEdit} from "../../ModalComponent";
-
+import url from "../../API";
 
 class AddLocationType extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: {},
+            data: [],
             switched: false,
             error: null,
             loading: false,
@@ -30,17 +30,15 @@ class AddLocationType extends Component {
             method: 'GET',
             headers: {'Content-Type': 'application/json'}
         };
-        fetch('http://192.168.0.88:5000/gettingaddresstype', requestOptions)
+        fetch(url+'/gettingaddresstype', requestOptions)
             .then(response => response.json())
             .then(data => {
-                console.log(data);
                 this.setState({data: data, loading: false});
             }).catch((e) => {
             this.setState({loading: false});
         });
     };
     deleteType = (address) => {
-        console.log(address);
         this.setState({loading: true,deleteModal:false});
         const requestOptions = {
             method: 'DELETE',
@@ -52,7 +50,6 @@ class AddLocationType extends Component {
         fetch('http://192.168.0.88:5000/deletingaddresstype', requestOptions)
             .then(response => response.json())
             .then(data => {
-                console.log(data);
                 this.typesLoader();
             });
 
@@ -68,7 +65,7 @@ class AddLocationType extends Component {
                 clickable:selectable
             })
         };
-        fetch('http://192.168.0.88:5000/editingaddresstype', requestOptions)
+        fetch(url+'/editingaddresstype', requestOptions)
             .then(response => response.json())
             .then(data => {
                 this.typesLoader();
@@ -103,7 +100,7 @@ class AddLocationType extends Component {
 
             <div className={"add-location-type-page"}>
                 {this.state.deleteModal? <ModalComponent action={this.deleteType} address={this.state.deleteString} cancel={this.canceledModal}/> : null}
-                {this.state.editModal? <ModalEdit action={this.editType} address={this.state.editString} cancel={this.canceledModal}/> : null}
+                {this.state.editModal? <ModalEdit select={true} action={this.editType} address={this.state.editString} cancel={this.canceledModal}/> : null}
                 <div className={"input-container"}>
                     <p className={"card-name"}>Add Location Type</p>
                     <div className={"inputs-container"}>
@@ -120,8 +117,8 @@ class AddLocationType extends Component {
                                 </label>
                                 <p>Input type: <span>{this.state.switched ? "Select" : "Text"}</span></p>
                             </div>
-
                         </div>
+
                         <div onClick={this.addType} className={"add-button"}>
                             Add
                         </div>
@@ -131,27 +128,27 @@ class AddLocationType extends Component {
                     <ul className={"cards-scroll"}>
                         {
                             this.state.loading ?
-                                <h1></h1> : Object.keys(this.state.data).length !== 0 ? Object.keys(this.state.data).map((item, index) => {
+                                <h1>Loading</h1> : this.state.data.length !== 0 ? this.state.data.map((item, index) => {
                                     return (
                                         <li key={index} className={"cards-item"}>
                                             <div className={"card"}>
-                                                <h3 className={"card-header"}>{item}</h3>
+                                                <h3 className={"card-header"}>{item.addresstype}</h3>
                                                 <div className={"card-right-container"}>
                                                     <p className={"card-selectable"}>Input
-                                                        Type: <span>{this.state.data[item] === "True" ?
+                                                        Type: <span>{item.clickable === "True" ?
                                                             "Select" : "Text"}</span></p>
                                                     <div className={"options-right"}>
                                                         <FontAwesomeIcon icon={faEdit} size="2x"
                                                                          className={"card-icon"}
                                                                          onClick={()=>{ this.setState({
                                                                              editModal: true,
-                                                                             editString: item
+                                                                             editString: item.addresstype
                                                                          })}}/>
                                                         <FontAwesomeIcon icon={faTrashAlt} size="2x"
                                                                          className={"card-icon"}
                                                                         onClick={()=>{ this.setState({
                                                                             deleteModal: true,
-                                                                            deleteString: item
+                                                                            deleteString: item.addresstype
                                                                         })}}/>
                                                     </div>
                                                 </div>
