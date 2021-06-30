@@ -1,0 +1,90 @@
+.user-list-container{
+    width: 100%;
+    height: fit-content;
+    /* border: 2px solid green; */
+    margin-top: 50px;
+    /* background-color: brown;  */
+    display: flex;
+    flex-direction: column;
+}
+.users-list-header-container{
+    margin-bottom: 24px;
+    color: rgba(225,235,245,.8);   
+}
+.users-list-header{
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.users-list-table-container{
+    width: 100%;
+    height: fit-content;
+    padding-bottom: 50px;
+    /* margin-bottom: 50px; */
+    background-color: #24344d;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: 2px solid blue; */
+}
+.users-list-table{
+    width: 95%;
+    height: 100%;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+
+}
+.table-row{
+    width: 100%;
+    height: 45px;
+    border-bottom: 1px solid rgb(86 96 105 / 90%);
+    
+    /* height: ; */
+}
+.table-data-row:hover{
+    background-color: #317498;
+    /* height: ; */
+}
+.table-head{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    font-size: 13px;
+    color: #c1c6ca;
+}
+.light-row{
+    background-color: #2f3c50a1;
+}
+.id-head, .id-row{
+    margin-left: 5px;
+    width: 150px;
+}
+.name-head, .name-row{
+    width: calc(100% - 780px);
+}
+.deposit-head, .deposit-row{
+    width: 130px;
+}
+.credit-head, .credit-row{
+    width: 100px;
+}
+.status-head, .status-row{
+    width: 100px;
+}
+.date-head, .date-row{
+    width: 150px;
+}
+
+.sold-head, .sold-row{
+    width: 150px;
+}
+.table-data-row{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    font-size: 13px;
+    color: #c1c6ca;
+    cursor: pointer;
+}

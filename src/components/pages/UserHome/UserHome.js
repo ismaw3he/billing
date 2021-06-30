@@ -32,6 +32,8 @@ import LeftSubIcon from "../../LeftSubIcon";
 import AddLocationType from "../AddLocationType/AddLocationType"
 import AddLocation from "../AddLocation/AddLocation";
 import AddContact from "../AddContact";
+import AddUser from "../AddUser/AddUser";
+import UsersList from "../UsersList/UsersList";
 import AddContactType from "../AddContactType/AddContactType";
 import TariffType from "../TariffType/TariffType";
 import AddPaymentMethod from "../AddPaymentMethod/AddPaymentMethod";
@@ -85,11 +87,13 @@ class UserHome extends Component {
                             subList: [
                                 {
                                     name: "Users List",
-                                    icon: faListAlt
+                                    icon: faListAlt,
+                                    url: "/admin/users-list"
                                 },
                                 {
                                     name: "Add User",
-                                    icon: faUserPlus
+                                    icon: faUserPlus,
+                                    url: "/admin/add-user"
                                 },
                                 {
                                     name: "Internet",
@@ -438,7 +442,7 @@ class UserHome extends Component {
 
                                     <li key={index}
                                         className={`left-nav-item-single ${item.active ? "active" : ""}`}
-                                        onClick={() => {
+                                        onMouseEnter={() => {
                                             this.state.navigationList.map((itemSecond, indexSecond) => {
                                                 indexSecond === index ? itemSecond.active = true : itemSecond.active = false;
                                             });
@@ -446,7 +450,9 @@ class UserHome extends Component {
                                                 navigation: this.state.navigation === 2 && this.state.activeSub === index ? 1 : 2,
                                                 activeSub: index
                                             })
-                                        }}>
+                                        }}
+                                        >
+                                            
                                         <LeftNavIcon item={item}/>
                                     </li>
                                 )
@@ -454,7 +460,12 @@ class UserHome extends Component {
                             }
                         </ul>
                     </div>
-                    <div className={`left-sub-nav ${this.state.navigation < 2 ? "hidden-sub-nav" : ""} `}>
+                    <div className={`left-sub-nav ${this.state.navigation < 2 ? "hidden-sub-nav" : ""} `}
+                    onMouseLeave={() => {
+                        this.setState({
+                            navigation:  1
+                        })
+                    }}>
                         <ul className={"left-sub-list"}>
                             {this.state.navigationList[this.state.activeSub].list.map((item, index) => {
                                 return <li key={index}
@@ -487,6 +498,8 @@ class UserHome extends Component {
                         <Route path={"/admin/add-tv-tariff"} component={AddTvTariff}/>
                         <Route path={"/admin/add-voip-tariff"} component={AddVoipTariff}/>
                         <Route path={"/admin/add-internet-tariff"} component={AddInternetTariff}/>
+                        <Route path={"/admin/add-user"} component={AddUser}/>
+                        <Route path={"/admin/users-list"} component={UsersList}/>
                     </div>
                 </div>
 
