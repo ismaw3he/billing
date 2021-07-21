@@ -88,3 +88,100 @@
     color: #c1c6ca;
     cursor: pointer;
 }
+.text-input-search {
+    width: 250px;
+    height: 18px;
+    background-color: #24344d;
+    color: #dedddd;
+    height: 13px;
+    border-radius: 10px;
+    border: 1px solid #526973;
+    box-shadow: inset 1px 2px 8px rgb(0 0 0 / 7%);
+    font-family: inherit;
+    font-size: 1em;
+    outline: none;
+    padding: 0.6em 1.45em 0.7em;
+    transition: .18s ease-out;
+    padding-left: 37px;
+}
+.head-right{
+    /* border: 1px solid red; */
+    justify-content: flex-end;
+}
+.search-icon{
+    margin-right: -29px;
+    z-index: 1;
+    font-size: 17px
+}
+.status-box{
+    width: 50px;
+    height: 10px;
+    border-radius: 15px;
+}
+.active-status{
+    background-color: #5f9c00;
+}
+.deactive-status{
+    background-color: rgb(255 11 3);
+}
+.opened-data-row{
+    height: 45px;
+    /* background-color: red; */
+}
+.opened-row{
+    height: 330px;
+    /* background-color: red; */
+}
+.info-box{
+    height: 260px;
+    width: calc(100% - 11px);
+    margin-left: 11px;
+    background-color: #131c29;
+    border-radius: 25px;
+    display: flex;
+    justify-content: space-around;
+    /* flex-direction: column; */
+    color: #c1c6ca;
+    margin-top: 10px;
+}
+.info-box-row{
+    height: 100%;
+    width: 250px;
+    flex-direction: column;
+    /* background-color: rgb(166, 219, 97); */
+    display: flex;
+    /* border: 1px solid red; */
+}
+.info-box-col{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 215px;
+    /* border: 1px solid greenyellow; */
+    justify-content: space-between;
+}
+.info-box-col >h3{
+    font-size: 16px;
+}
+.info-box-col >p {
+    font-size: 13px;
+    margin-top: 3px;
+}
+.more-button {
+    align-self: flex-end;
+    width: 76px;
+    height: 34px;
+    background-color: #52acd4;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 135px;
+    font-size: 17px;
+}
+
+.more-button:hover {
+    background-color: #408aaa;
+}

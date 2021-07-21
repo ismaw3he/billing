@@ -1,0 +1,151 @@
+
+.user-add-container{
+    width: 100%;
+    color: white;
+    height: fit-content;
+    margin-bottom: 50px;
+    padding-bottom: 50px;
+    /* margin-bottom: 50px; */
+    background-color: #24344d;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    /* border: 2px solid blue; */
+}
+.user-add-input-container{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 15px;
+    margin-right: 30px;
+    margin-top: 30px;
+    width: 100%;
+}
+.user-add-flex-container{
+    display: flex;
+    justify-content: flex-end;
+    width: fit-content;
+}
+.selectWrapper-user-add{
+    border-radius:36px;
+    display:inline-block;
+    overflow:hidden;
+    background:#131c29;
+    width: 75px;
+}
+.selectBox-user-add {
+    width: 72px;
+    height: 41px;
+    border: 1px solid #313131;
+    outline: none;
+    padding: 10px;
+    background-color: #131c29;
+    color: #8f8f8f;
+    font-size: 15px;
+}
+
+.text-input{
+    margin-left: 30px;
+    width: 80%;
+    height: 18px;
+    background-color: #24344d;
+    color: #dedddd;
+    height: 13px;
+    border-radius: 5px;
+    /* border: none; */
+    border: 1px solid #526973;
+    box-shadow: inset 1px 2px 8px rgb(0 0 0 / 7%);
+    font-family: inherit;
+    font-size: 1em;
+    outline: none;
+    padding: 0.6em 1.45em 0.7em;
+    transition: .18s ease-out;
+}
+
+.date-container{
+    width: 280px;
+}
+.serial-container{
+    width: 400px;
+}
+.balance-container{
+    width: 275px;
+}
+.serial-number-label{
+    width: 135px;
+}
+.serial-input{
+    width: 150px;
+    margin-left: 5px;
+}
+
+.tariff{
+    width: 185px;
+}
+.tariff-box{
+    width: 185px;
+}
+.tariff-label {
+    width: 100px;
+}
+.tariff-container{
+    width: 285px;
+}
+.plan-label{
+    width: 50px;
+}
+
+.phone-list{
+    /* display: flex; */
+    width: 82%;
+    align-self: flex-end;
+}
+.phone-single{
+    width: fit-content;
+    padding: 10px;
+    margin: 15px 0;
+    background-color: #526973;
+    border-radius: 20px;
+    display: flex;
+}
+.cross{
+    margin-left: 10px;
+    font-weight: bold;
+    color: red;
+    cursor: pointer;
+}
+.plus-container{
+    width: 325px;
+}
+.plus-button {
+    width: 55px;
+    height: 33px;
+    background-color: #526973;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.submit-button {
+    width: 195px;
+    height: 42px;
+    background-color: #52acd4;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 20px;
+    font-size: 19px;
+    align-self: flex-end;
+    margin-right: 60px;
+}
+.submit-button:hover{
+    background-color: #4390b1;
+}

@@ -105,10 +105,14 @@
 .search-box-icon:hover {
     color: #80bfdf;
 }
+body{
+    background-color: #131c29;
+}
 .full-screen{
     background-color: #131c29;
     width: 100vw;
-    height: 100vh;
+    /* min-height: 100vh; */
+    
     display: flex;
     flex-direction: column;
 }
