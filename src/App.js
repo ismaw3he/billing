@@ -2,20 +2,20 @@ import React from 'react';
 import './App.css';
 import {
     BrowserRouter as Router,
-    Switch,
     Route
 } from "react-router-dom";
 import Modal from "react-modal";
-
-import AdminLoginPage from "./components/pages/AdminLoginPage/AdminLoginPage";
-import UserLoginPage from "./components/pages/UserLoginPage/UserLoginPage";
-import LoginWrapper from "./components/loginWrapper";
-import AdminHome from "./components/pages/AdminHome/AdminHome";
+import LoginNew from './components/pages/LoginNew/LoginNew';
+// import AdminLoginPage from "./components/pages/AdminLoginPage/AdminLoginPage";
+// import UserLoginPage from "./components/pages/UserLoginPage/UserLoginPage";
+// import LoginWrapper from "./components/loginWrapper";
+// import AdminHome from "./components/pages/AdminHome/AdminHome";
 import UserHome from "./components/pages/UserHome/UserHome";
 Modal.setAppElement("#root");
 function App() {
     return (
         <Router>
+            <Route path={"/login"} component={LoginNew}/> 
         <UserHome />
         </Router>
             // {/*<Router>*/}

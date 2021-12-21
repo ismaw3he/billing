@@ -3,7 +3,6 @@ import {ModalComponent, ModalEdit} from "../../ModalComponent";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEdit, faTrashAlt} from "@fortawesome/free-solid-svg-icons";
 import "./style.css";
-import loginWrapper from "../../loginWrapper";
 import url from "../../API";
 class AddLocation extends Component {
     constructor(props) {
@@ -175,7 +174,7 @@ class AddLocation extends Component {
                     <ul className={"cards-scroll-short"}>
                         {
                             this.state.contentLoad ?
-                                <h1></h1> : this.state.content.length !== 0 ? this.state.content.map((item, index) => {
+                                <h1> </h1> : this.state.content.length !== 0 ? this.state.content.map((item, index) => {
                                     return (
                                         <li key={index} className={"cards-item"}>
                                             <div className={"card"}>

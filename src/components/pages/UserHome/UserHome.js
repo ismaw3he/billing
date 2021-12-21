@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {Route, Redirect} from 'react-router-dom'
 import "../UserHome.css";
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+
+// import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {
     faTv,
     faUserFriends,
@@ -21,28 +22,31 @@ import {
     faChartLine,
     faAddressCard,
     faIdBadge,
-    faDollarSign,
     faCube,
     faMoneyBillAlt,
-    faWallet, faGlobeEurope, faPhoneVolume, faBuilding
+    faWallet, faGlobeEurope, faPhoneVolume, faBuilding, faDollarSign
 } from '@fortawesome/free-solid-svg-icons'
 import TopNav from "../../TopNav";
 import LeftNavIcon from "../../LeftNavIcon";
 import LeftSubIcon from "../../LeftSubIcon";
-import AddLocationType from "../AddLocationType/AddLocationType"
-import AddLocation from "../AddLocation/AddLocation";
-import AddContact from "../AddContact";
+
+// import AddLocationType from "../AddLocationType/AddLocationType"
+// import AddLocation from "../AddLocation/AddLocation";
+// import AddContact from "../AddContact";
 import AddUser from "../AddUser/AddUser";
+import UserEdit from "../UserEdit/UserEdit";
+import MonitoringUser from "../MonitoringUser/MonitoringUser";
+// import LoginNew from "../LoginNew/LoginNew";
 import UsersList from "../UsersList/UsersList";
-import AddContactType from "../AddContactType/AddContactType";
-import TariffType from "../TariffType/TariffType";
-import AddPaymentMethod from "../AddPaymentMethod/AddPaymentMethod";
-import AddWithdrawMethod from "../AddWithdrawMethod/AddWithdrawMethod";
+// import AddContactType from "../AddContactType/AddContactType";
+// import TariffType from "../TariffType/TariffType";
+// import AddPaymentMethod from "../AddPaymentMethod/AddPaymentMethod";
+// import AddWithdrawMethod from "../AddWithdrawMethod/AddWithdrawMethod";
 import url from "../../API";
-import AddIntercomTariff from "../Tariffs/AddIntercomTariff";
-import AddTvTariff from "../Tariffs/AddTVTariff";
-import AddVoipTariff from "../Tariffs/AddVOIPTariff";
-import AddInternetTariff from "../Tariffs/AddInternetTariff";
+// import AddIntercomTariff from "../Tariffs/AddIntercomTariff";
+// import AddTvTariff from "../Tariffs/AddTVTariff";
+// import AddVoipTariff from "../Tariffs/AddVOIPTariff";
+// import AddInternetTariff from "../Tariffs/AddInternetTariff";
 const mapStateToProps = state => {
     return {
         loggedIn: state.loggedIn,
@@ -50,7 +54,8 @@ const mapStateToProps = state => {
         isUser: state.isUser,
         accessToken: state.accessToken,
         refreshToken: state.refreshToken,
-        mainPage: state.mainPage
+        mainPage: state.mainPage,
+        loggedInNew: state.loggedInNew
     };
 };
 const mapDispatchToProps = dispatch => {
@@ -308,33 +313,29 @@ class UserHome extends Component {
                     name: "Monitoring",
                     icon: faSignal,
                     active: false,
-                    collapsed: true,
                     list: [
                         {
-                            name: "Internet",
+                            name: "Users",
                             icon: faAngleRight,
-                            subList: []
+                            subList: [
+                                {
+                                    name: "Users",
+                                    icon: faUsers,
+                                    url: "/admin/monitoring-user"
+                                },
+                                {
+                                    name: "Traffic",
+                                    icon: faChartLine,
+                                    url: "/admin/users-list"
+                                },
+                                {
+                                    name: "Payments",
+                                    icon: faDollarSign,
+                                    url: "/admin/users-list"
+                                },
+
+                            ]
                         },
-                        {
-                            name: "TV",
-                            icon: faAngleRight,
-                            subList: []
-                        },
-                        {
-                            name: "VOIP",
-                            icon: faAngleRight,
-                            subList: []
-                        },
-                        {
-                            name: "Buildings",
-                            icon: faAngleRight,
-                            subList: []
-                        },
-                        {
-                            name: "Equipments",
-                            icon: faAngleRight,
-                            subList: []
-                        }
                     ]
                 },
                 {
@@ -428,86 +429,93 @@ class UserHome extends Component {
 
 
     render() {
-        // if(!this.props.loggedIn){
-        //     return <Redirect to="/login" />
-        // }
-        return (
-            <div className={"full-screen"}>
-                <TopNav onNavPositionChange={this.onNavPositionChange}/>
-                <div className={"screen-main"}>
-                    <div className={`left-nav-container ${this.state.navigation === 0 ? "hidden-nav" : ""}`}>
-                        <ul className={"left-nav-items"}>
-                            {this.state.navigationList.map((item, index) => {
-                                return (
-
-                                    <li key={index}
-                                        className={`left-nav-item-single ${item.active ? "active" : ""}`}
-                                        onMouseEnter={() => {
-                                            this.state.navigationList.map((itemSecond, indexSecond) => {
-                                                indexSecond === index ? itemSecond.active = true : itemSecond.active = false;
-                                            });
-                                            this.setState({
-                                                navigation: this.state.navigation === 2 && this.state.activeSub === index ? 1 : 2,
-                                                activeSub: index
-                                            })
-                                        }}
-                                        >
-                                            
-                                        <LeftNavIcon item={item}/>
+        if(!this.props.loggedInNew){
+            return <Redirect to="/login" />
+            
+        }
+        else{
+            return (
+                <div className={"full-screen"}>
+                    <TopNav onNavPositionChange={this.onNavPositionChange}/>
+                    <div className={"screen-main"}>
+                        <div className={`left-nav-container ${this.state.navigation === 0 ? "hidden-nav" : ""}`}>
+                            <ul className={"left-nav-items"}>
+                                {this.state.navigationList.map((item, index) => {
+                                    return (
+    
+                                        <li key={index}
+                                            className={`left-nav-item-single ${item.active ? "active" : ""}`}
+                                            onMouseEnter={() => {
+                                                this.state.navigationList.map((itemSecond, indexSecond) => {
+                                                    return indexSecond === index ? itemSecond.active = true : itemSecond.active = false;
+                                                });
+                                                this.setState({
+                                                    navigation: this.state.navigation === 2 && this.state.activeSub === index ? 1 : 2,
+                                                    activeSub: index
+                                                })
+                                            }}
+                                            >
+                                                
+                                            <LeftNavIcon item={item}/>
+                                        </li>
+                                    )
+                                })
+                                }
+                            </ul>
+                        </div>
+                        <div className={`left-sub-nav ${this.state.navigation < 2 ? "hidden-sub-nav" : ""} `}
+                        onMouseLeave={() => {
+                            this.setState({
+                                navigation:  1
+                            })
+                        }}>
+                            <ul className={"left-sub-list"}>
+                                {this.state.navigationList[this.state.activeSub].list.map((item, index) => {
+                                    return <li key={index}
+                                               onClick={item.subList.length !== 0 && this.state.collapsing !== index ? () => {
+                                                   this.setState({
+                                                       collapsing: index
+                                                   });
+                                               } : () => {
+                                                   this.setState({
+                                                       collapsing: null
+                                                   });
+                                               }}>
+                                        <LeftSubIcon item={item} index={index} collapsing={this.state.collapsing}/>
                                     </li>
-                                )
-                            })
-                            }
-                        </ul>
-                    </div>
-                    <div className={`left-sub-nav ${this.state.navigation < 2 ? "hidden-sub-nav" : ""} `}
-                    onMouseLeave={() => {
-                        this.setState({
-                            navigation:  1
-                        })
-                    }}>
-                        <ul className={"left-sub-list"}>
-                            {this.state.navigationList[this.state.activeSub].list.map((item, index) => {
-                                return <li key={index}
-                                           onClick={item.subList.length !== 0 && this.state.collapsing !== index ? () => {
-                                               this.setState({
-                                                   collapsing: index
-                                               });
-                                           } : () => {
-                                               this.setState({
-                                                   collapsing: null
-                                               });
-                                           }}>
-                                    <LeftSubIcon item={item} index={index} collapsing={this.state.collapsing}/>
-                                </li>
-                            })
-                            }
-                        </ul>
-                    </div>
+                                })
+                                }
+                            </ul>
+                        </div>
+    
+    
+                        <div className={"screen-main-right"}>
+                            {/* <Route path={"/admin/addlocationtype"} component={AddLocationType}/> */}
+                            {/* <Route path={"/admin/addlocation"} component={AddLocation}/> */}
+                            {/* <Route path={"/admin/addcontacttype"} component={AddContactType}/> */}
+                            {/* <Route path={"/admin/addcontact"} component={AddContact}/> */}
+                            {/* <Route path={"/admin/tarifftype"} component={TariffType}/> */}
+                            {/* <Route path={"/admin/add-payment-method"} component={AddPaymentMethod}/> */}
+                            {/* <Route path={"/admin/add-withdraw-method"} component={AddWithdrawMethod}/> */}
+                            {/* <Route path={"/admin/add-intercom-tariff"} component={AddIntercomTariff}/> */}
+                            {/* <Route path={"/admin/add-tv-tariff"} component={AddTvTariff}/> */}
+                            {/* <Route path={"/admin/add-voip-tariff"} component={AddVoipTariff}/> */}
+                            {/* <Route path={"/admin/add-internet-tariff"} component={AddInternetTariff}/> */}
+                            <Route path={"/admin/add-user"} component={AddUser}/>
+                            <Route path={"/admin/users-list"} component={UsersList}/>
+                            <Route path={"/admin/user-edit"} component={UserEdit}/>
 
-
-                    <div className={"screen-main-right"}>
-                        <Route path={"/admin/addlocationtype"} component={AddLocationType}/>
-                        <Route path={"/admin/addlocation"} component={AddLocation}/>
-                        <Route path={"/admin/addcontacttype"} component={AddContactType}/>
-                        <Route path={"/admin/addcontact"} component={AddContact}/>
-                        <Route path={"/admin/tarifftype"} component={TariffType}/>
-                        <Route path={"/admin/add-payment-method"} component={AddPaymentMethod}/>
-                        <Route path={"/admin/add-withdraw-method"} component={AddWithdrawMethod}/>
-                        <Route path={"/admin/add-intercom-tariff"} component={AddIntercomTariff}/>
-                        <Route path={"/admin/add-tv-tariff"} component={AddTvTariff}/>
-                        <Route path={"/admin/add-voip-tariff"} component={AddVoipTariff}/>
-                        <Route path={"/admin/add-internet-tariff"} component={AddInternetTariff}/>
-                        <Route path={"/admin/add-user"} component={AddUser}/>
-                        <Route path={"/admin/users-list"} component={UsersList}/>
+                            <Route path={"/admin/monitoring-user"} component={MonitoringUser}/>
+                        </div>
                     </div>
+    
+                    {/*<button onClick={this.onLogOut}> Log out </button>*/}
+                    {/*{this.state.error? <h3>{this.state.error}</h3>:null}*/}
+                    {/*{this.state.loading? <h3>LOADING...</h3>:null}*/}
                 </div>
+            );
+        }
 
-                {/*<button onClick={this.onLogOut}> Log out </button>*/}
-                {/*{this.state.error? <h3>{this.state.error}</h3>:null}*/}
-                {/*{this.state.loading? <h3>LOADING...</h3>:null}*/}
-            </div>
-        );
     }
 }
 

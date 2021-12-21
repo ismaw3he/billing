@@ -149,3 +149,40 @@
 .submit-button:hover{
     background-color: #4390b1;
 }
+
+.response-message{
+    position: absolute;
+    right: 4px;
+    top: 97px;
+    bottom: 100px;
+    border-radius: 10px;
+    width: 400px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #520209;
+    border-color: #ffbcc3;
+}
+
+.response-message-error{
+    background-color: #ff6674;
+}
+.response-message-loading{
+    background-color: #ffde66;
+}
+.response-message-success{
+    background-color: #66ff79;
+}
+.add-user-loader{
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 150px);
+    border-radius: 5px;
+    background-color: #52acd480;
+    top: 100px;
+    left: 0;
+}
+.response-message-hidden{
+    top: -300px;
+}
