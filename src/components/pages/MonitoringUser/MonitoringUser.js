@@ -3,6 +3,8 @@ import "./style.css";
 import { connect } from "react-redux";
 
 
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+
 
 const mapStateToProps = state => {
     return {
@@ -31,6 +33,8 @@ class MonitoringUser extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            chartData: [],
+            count: 0,
             error: null,
             loading: false,
             searching: false,
@@ -58,22 +62,81 @@ class MonitoringUser extends Component {
         fetch('http://62.212.226.11:7755/gettingallusers')
             .then(res => res.json())
             .then(result => {
+                let dateData = [];
+
+                let groupedData = [
+                    {
+                        name: "02-2021",
+                        customers: 0 
+                    }
+                ];
+
+                for(let i=0; i < result.length; i++){
+                    dateData.push(result[i][6].substring(3))
+
+                    let found = false;
+                    for(let x = 0;x < groupedData.length; x++){
+                        if(groupedData[x].name === result[i][6].substring(3)){
+                            groupedData[x].customers ++;
+                            found = true;
+                        }
+                    }
+                    if(!found){
+                        groupedData.push({
+                            name: result[i][6].substring(3),
+                            customers: 1
+                        })
+                    }
+                }
+
+                console.log("groupedData")
+                console.log(groupedData)
+
+                console.log(dateData)
                 this.setState({
                     loading: false,
-                    data: result
+                    data: groupedData,
+                    count: result.length
                 });
             });
     }
-    
+
 
     render() {
         return (
             <div className="user-list-container">
                 <div className="users-list-header-container">
-                    <h3 className="users-list-header">Users Count Monitoring (Total: {this.state.data.length})</h3>
+                    <h3 className="users-list-header">Users Count Monitoring (Total: {this.state.count})</h3>
                 </div>
-                <div className="users-list-table-container">
-                    Test
+                <div className="users-list-table-container" style={{height: "500px", paddingTop: "50px"}}>
+                    
+                    {console.log(this.state.data)}
+
+
+
+
+                    <ResponsiveContainer width="100%" height="100%">
+                        <AreaChart
+                            width={500}
+                            height={400}
+                            data={this.state.data}
+                            margin={{
+                                top: 10,
+                                right: 30,
+                                left: 0,
+                                bottom: 0,
+                            }}
+                        >
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis dataKey="name" />
+                            <YAxis />
+                            <Tooltip />
+                            <Area type="monotone" dataKey="customers" stroke="#8884d8" fill="#a90d0d" />
+                        </AreaChart>
+                    </ResponsiveContainer>
+
+
+
 
                 </div>
             </div>
