@@ -48,8 +48,8 @@ class AddUser extends Component {
     }
 
 
-
     async addUser() {
+
         let data = {
             username: this.state.data.username,
             password: this.state.data.password,
@@ -67,7 +67,7 @@ class AddUser extends Component {
             tv_tariff: null,
             tv_price: 0,
             voip_tariff: "standard",
-            voip_price: 2.5,
+            voip_price: this.state.data.usagegroup === "Internet + Telephone" ? 2.5 : 0,
             voip_number: null,
             intercom_tariff: null,
             intercom_price: 0,
@@ -83,7 +83,7 @@ class AddUser extends Component {
             box: this.state.data.box,
             note: null
         }
-        console.log(data)
+        // console.log(data)
         // Default options are marked with *
         const response = await fetch("http://62.212.226.11:7755/addinguser", {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
@@ -151,7 +151,7 @@ class AddUser extends Component {
                     error: false,
                     responseMessage: ""
                 })
-            }, 2000)
+            }, 20000)
         }).catch((error) => {
             console.log("errror:")
             console.log(error)
@@ -192,7 +192,6 @@ class AddUser extends Component {
                         null
                     } */}
 
-
                     <div className="users-list-header-container">
                         <h3 className="users-list-header">Add User</h3>
                     </div>
@@ -230,7 +229,7 @@ class AddUser extends Component {
 
                                 type="number" value={this.state.data.username} />
                         </div>
-                        {console.log(this.state.data)}
+                        {/* {console.log(this.state.data)} */}
                         <div className="user-add-input-container">
                             <p>Password: </p>
                             <input className="text-input"
@@ -319,20 +318,7 @@ class AddUser extends Component {
                             </div>
                         </div>
 
-                        <div className="user-add-input-container">
-                            <p>First Name: </p>
-                            <input className="text-input"
-                                value={this.state.data.firstname}
-                                onChange={(e) => {
-                                    this.setState({
-                                        data: {
-                                            ...this.state.data,
-                                            firstname: e.target.value
-                                        }
-                                    })
-                                }}
-                                type="text" />
-                        </div>
+
                         <div className="user-add-input-container">
                             <p>Last Name: </p>
                             <input className="text-input"
@@ -342,6 +328,20 @@ class AddUser extends Component {
                                         data: {
                                             ...this.state.data,
                                             lastname: e.target.value
+                                        }
+                                    })
+                                }}
+                                type="text" />
+                        </div>
+                        <div className="user-add-input-container">
+                            <p>First Name: </p>
+                            <input className="text-input"
+                                value={this.state.data.firstname}
+                                onChange={(e) => {
+                                    this.setState({
+                                        data: {
+                                            ...this.state.data,
+                                            firstname: e.target.value
                                         }
                                     })
                                 }}

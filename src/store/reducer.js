@@ -79,15 +79,15 @@ const reducer = (state = initialState, action) => {
                 accessToken: action.accessToken,
                 refreshToken: action.refreshToken,
             };
-        case "LOGOUT_USER":
-            return {
-                ...state,
-                isAdmin: action.isAdmin,
-                isUser: action.isUser,
-                loggedIn: action.loggedIn,
-                accessToken: action.accessToken,
-                refreshToken: action.refreshToken,
-            };
+        // case "LOGOUT_USER":
+        //     return {
+        //         ...state,
+        //         isAdmin: action.isAdmin,
+        //         isUser: action.isUser,
+        //         loggedIn: action.loggedIn,
+        //         accessToken: action.accessToken,
+        //         refreshToken: action.refreshToken,
+        //     };
         case "USERNAME_CHANGE":
             return {
                 ...state,
@@ -123,7 +123,12 @@ const reducer = (state = initialState, action) => {
                 user: action.user,
                 loggedInNew: true
             };
+        case "LOGOUT_USER":
 
+            return {
+                ...state,
+                loggedInNew: false
+            };
         case "EDIT_USER":
             return {
                 ...state,

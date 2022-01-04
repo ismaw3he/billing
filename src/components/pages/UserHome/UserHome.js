@@ -13,6 +13,7 @@ import {
     faMapMarkedAlt,
     faGlobeAmericas,
     faUserPlus,
+    faChalkboardTeacher,
     faUsers,
     faAngleRight,
     faSignal,
@@ -36,6 +37,7 @@ import LeftSubIcon from "../../LeftSubIcon";
 import AddUser from "../AddUser/AddUser";
 import UserEdit from "../UserEdit/UserEdit";
 import MonitoringUser from "../MonitoringUser/MonitoringUser";
+import MonitoringTraffic from '../MonitoringTraffic/MonitoringTraffic';
 // import LoginNew from "../LoginNew/LoginNew";
 import UsersList from "../UsersList/UsersList";
 // import AddContactType from "../AddContactType/AddContactType";
@@ -43,6 +45,8 @@ import UsersList from "../UsersList/UsersList";
 // import AddPaymentMethod from "../AddPaymentMethod/AddPaymentMethod";
 // import AddWithdrawMethod from "../AddWithdrawMethod/AddWithdrawMethod";
 import url from "../../API";
+import MonitoringActiveUsers from '../MonitoringActiveUsers/MonitoringActiveUsers';
+
 // import AddIntercomTariff from "../Tariffs/AddIntercomTariff";
 // import AddTvTariff from "../Tariffs/AddTVTariff";
 // import AddVoipTariff from "../Tariffs/AddVOIPTariff";
@@ -102,15 +106,18 @@ class UserHome extends Component {
                                 },
                                 {
                                     name: "Internet",
-                                    icon: faNetworkWired
+                                    icon: faNetworkWired,
+                                    url: "/admin/users-list"
                                 },
                                 {
                                     name: "TV",
-                                    icon: faTv
+                                    icon: faTv,
+                                    url: "/admin/users-list"
                                 },
                                 {
                                     name: "VOIP",
-                                    icon: faPhoneAlt
+                                    icon: faPhoneAlt,
+                                    url: "/admin/users-list"
                                 }]
                         },
                         {
@@ -119,7 +126,8 @@ class UserHome extends Component {
                             subList: [
                                 {
                                     name: "Groups",
-                                    icon: faUserFriends
+                                    icon: faUserFriends,
+                                    url: "/admin/users-list"
                                 }]
                         }
                     ]
@@ -137,11 +145,13 @@ class UserHome extends Component {
                             subList: [
                                 {
                                     name: "Users List",
-                                    icon: faListAlt
+                                    icon: faListAlt,
+                                    url: "/admin/users-list"
                                 },
                                 {
                                     name: "Users List",
-                                    icon: faListAlt
+                                    icon: faListAlt,
+                                    url: "/admin/users-list"
                                 }]
                         },
                         {
@@ -315,18 +325,23 @@ class UserHome extends Component {
                     active: false,
                     list: [
                         {
-                            name: "Users",
+                            name: "Internet",
                             icon: faAngleRight,
                             subList: [
                                 {
-                                    name: "Users",
+                                    name: "User Count",
                                     icon: faUsers,
                                     url: "/admin/monitoring-user"
                                 },
                                 {
+                                    name: "Active Users (Live)",
+                                    icon: faChalkboardTeacher,
+                                    url: "/admin/monitoring-active-users"
+                                },
+                                {
                                     name: "Traffic",
                                     icon: faChartLine,
-                                    url: "/admin/users-list"
+                                    url: "/admin/monitoring-traffic"
                                 },
                                 {
                                     name: "Payments",
@@ -506,6 +521,9 @@ class UserHome extends Component {
                             <Route path={"/admin/user-edit"} component={UserEdit}/>
 
                             <Route path={"/admin/monitoring-user"} component={MonitoringUser}/>
+                            <Route path={"/admin/monitoring-traffic"} component={MonitoringTraffic}/>
+                            <Route path={"/admin/monitoring-active-users"} component={MonitoringActiveUsers}/>
+                            
                         </div>
                     </div>
     

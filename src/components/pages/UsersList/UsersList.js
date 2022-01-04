@@ -58,6 +58,7 @@ class UsersList extends Component {
     }
 
     componentDidMount() {
+
         fetch('http://62.212.226.11:7755/gettingallusers')
             .then(res => res.json())
             .then(result => {
@@ -127,6 +128,7 @@ class UsersList extends Component {
                                             // string.includes(substring)
                                         })
                                         this.setState({
+                                            infoIndex: -1,
                                             searching: search,
                                             filteredData: filtered
                                         })
@@ -166,8 +168,6 @@ class UsersList extends Component {
                                     <div key={index} className={index === this.state.infoIndex ? "table-row opened-row" : "table-row"}>
                                         <div
                                             onClick={() => {
-                                                console.log(index)
-                                                console.log(this.state.infoIndex)
                                                 if (this.state.infoIndex !== index) {
                                                     this.getSingleUser(item[0], index)
                                                 }
@@ -265,7 +265,6 @@ class UsersList extends Component {
 
                                                     <Link to={"user-edit"} className={"more-button"}
                                                         onClick={() => {
-                                                            console.log(this.state.data[this.state.infoIndex][0])
                                                             this.props.onEditUser(this.state.filteredData[this.state.infoIndex][0])
                                                         }}
                                                     >
@@ -363,7 +362,6 @@ class UsersList extends Component {
                                                 <div className="info-box-row">
                                                     <div className="info-box-col">
                                                         <h3>VOIP Price: </h3>
-                                                        {console.log(this.state.usage)}
                                                         <p>{this.state.usage.length === 8 ? 0 : 2.5} AZN</p>
                                                     </div>
                                                     <div className="info-box-col">

@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import "./style.css";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 // import loginWrapper from "../../loginWrapper";
 
 const mapStateToProps = state => {
@@ -58,10 +58,9 @@ class UserEdit extends Component {
         fetch('http://62.212.226.11:7755/gettinguser/' + id)
             .then(res => res.json())
             .then(result => {
-                console.log(result)
                 this.setState({
                     ...this.state,
-                    data:{
+                    data: {
                         username: result.username,
                         password: result.username,
                         firstname: result.firstname,
@@ -86,6 +85,7 @@ class UserEdit extends Component {
     }
 
     componentDidMount() {
+
         this.getSingleUser(this.props.user)
     }
 
@@ -125,13 +125,13 @@ class UserEdit extends Component {
             // console.log(data);
 
 
-                this.setState({
-                    ...this.state,
-                    loading: false,
-                    success: true,
-                    error: false,
-                    responseMessage: message,
-                })
+            this.setState({
+                ...this.state,
+                loading: false,
+                success: true,
+                error: false,
+                responseMessage: message,
+            })
 
 
 
@@ -275,16 +275,17 @@ class UserEdit extends Component {
                         <div className="user-add-input-container balance-container">
                             <p className="serial-number-label">Box: </p>
                             <input className="text-input serial-input"
-                                value={this.state.data.box}
+                                // value={this.state.data.box}
+                                defaultValue={this.state.data.box}
                                 disabled
                                 type="text" />
                         </div>
                         <div className="user-add-input-container">
                             <p>Mac Address: </p>
                             <input className="text-input"
-                            
+
                                 defaultValue={this.state.data.macAddress}
-                                
+
                                 onChange={(e) => {
                                     this.setState({
                                         newMacAddress: e.target.value

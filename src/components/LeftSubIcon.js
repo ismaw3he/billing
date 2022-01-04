@@ -17,6 +17,8 @@ class LeftSubIcon extends Component {
 
                         this.props.item.subList.map((subItem, subIndex) => {
                             return (
+                                
+                                
                                 <Link to={subItem.url} key={subIndex} className={"decoration-none"}>
                                     <li className={"left-sub-single"}>
                                         <FontAwesomeIcon icon={subItem.icon} size="2x"

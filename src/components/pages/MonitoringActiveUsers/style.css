@@ -1,0 +1,16 @@
+.chart-info-box{
+    display: flex;
+    align-items: center;
+}
+
+.chart-color-info{
+    width: 15px;
+    height: 15px;
+    background-color: red;
+    border: 1px solid white;
+    margin: 10px;
+}
+
+.chart-statistics-info{
+    color: white;
+}

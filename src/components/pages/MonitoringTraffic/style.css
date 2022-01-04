@@ -1,0 +1,16 @@
+.charts-container{
+    height: 360px;
+    width: 48%;
+}
+.users-list-table-container-second{
+    width: 100%;
+    height: -moz-fit-content;
+    height: fit-content;
+    padding-bottom: 50px;
+    background-color: #24344d;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}

@@ -44,13 +44,30 @@ class LoginNew extends Component {
     checkUser = () => {
         for (let i = 0; i < this.props.accounts.length; i++) {
             if (this.props.accounts[i].username === this.props.username && this.props.accounts[i].password === this.props.password) {
-                this.setState({error : false})
+                this.setState({ error: false })
                 this.props.onLogInUserNew(this.props.accounts[i].fullname);
+
+
+                const d = new Date();
+                localStorage.setItem('account', this.props.accounts[i].fullname);
+                localStorage.setItem('time', d.getTime());
+
                 break;
             }
-            else{
-                this.setState({error : true})
+            else {
+                this.setState({ error: true })
             }
+        }
+    }
+
+    componentDidMount() {
+        let d = new Date();
+
+        let time = d.getTime() - localStorage.getItem("time");
+        let seconds = time / 1000
+
+        if(localStorage.getItem("account")!==null && seconds <= 3600){
+            this.props.onLogInUserNew(localStorage.getItem("account"));
         }
     }
     render() {
@@ -96,7 +113,7 @@ class LoginNew extends Component {
                                 />
                             </div>
 
-                            <button  type="submit" onClick={() => this.checkUser()} className="login-button-new" href="#">
+                            <button type="submit" onClick={() => this.checkUser()} className="login-button-new" href="#">
                                 <span></span>
                                 <span></span>
                                 <span></span>
@@ -104,7 +121,7 @@ class LoginNew extends Component {
                                 Log In
                             </button>
 
-                            <p  className={this.state.error ? "error-text red": "error-text"}>Invalid Username or password</p>
+                            <p className={this.state.error ? "error-text red" : "error-text"}>Invalid Username or password</p>
                         </form>
 
                     </div>

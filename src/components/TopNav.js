@@ -3,7 +3,7 @@ import Hamburger from "./Hamburger";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { 
     faSearch, 
-    // faRedoAlt 
+    faSignOutAlt
 } from "@fortawesome/free-solid-svg-icons";
 import profile from "../img/profile.jpg";
 import { connect } from "react-redux";
@@ -18,23 +18,14 @@ const mapStateToProps = state => {
         user: state.user
     };
 };
+
 const mapDispatchToProps = dispatch => {
     return {
-        onLogInUserNew: () => dispatch({
-            type: "LOGIN_USER_NEW",
-            loggedInNew: true
-        }),
-        onPasswordChange: (text) => dispatch({
-            type: "PASSWORD_INPUT_CHANGE",
-            payload: text
-        }),
-        onUsernameChange: (text) => dispatch({
-            type: "USERNAME_INPUT_CHANGE",
-            payload: text
+        onLogOutUser: () => dispatch({
+            type: "LOGOUT_USER"
         })
     };
 };
-
 
 class TopNav extends Component {
 
@@ -108,6 +99,21 @@ class TopNav extends Component {
                 <div className={"top-nav-right"}>
                     <p className={"nav-right-username"}>{this.props.user}</p>
                     <div className={"profile-picture"} style={profileBackground} />
+                    <FontAwesomeIcon icon={faSignOutAlt} size="1x"
+                        onClick={()=>{
+                            
+                            localStorage.removeItem('account');
+                            localStorage.removeItem('time');
+                            this.props.onLogOutUser();
+                        }}
+                        style={
+                            {
+                                fontSize: "25px",
+                                color: "#8f8f8f",
+                                cursor: "pointer",
+                                marginLeft:"40px"
+                            }
+                        } />
                 </div>
             </div>
         );
