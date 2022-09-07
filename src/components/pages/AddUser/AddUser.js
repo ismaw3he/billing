@@ -417,15 +417,20 @@ class AddUser extends Component {
                                             })
                                         }}
                                         className={"selectBox-user-add tariff-box"}>
-                                        <option value="18.0-10500">18 AZN : 10 MB/S</option>
-                                        <option value="20.0-15500">20 AZN : 15 MB/S</option>
-                                        <option value="25.0-25500">25 AZN : 25 MB/S</option>
-                                        <option value="28.0-30500">28 AZN : 30 MB/S</option>
+                                        <option value="18.0-40000">18 AZN : 40 MB/S</option>
+                                        <option value="20.0-50000">20 AZN : 50 MB/S</option>
+                                        <option value="25.0-70000">25 AZN : 70 MB/S</option>
+                                        <option value="28.0-80000">28 AZN : 80 MB/S</option>
                                         <option value="19.0-3500">19 AZN : 3 MB/S</option>
                                         <option value="29.0-5500">29 AZN : 5 MB/S</option>
                                         <option value="39.0-10500">39 AZN : 10 MB/S</option>
                                         <option value="49.0-15500">49 AZN : 15 MB/S</option>
                                         <option value="59.0-20500">59 AZN : 20 MB/S</option>
+                                        <option value="18.0-10500">18 AZN : 10 MB/S</option>
+                                        <option value="20.0-15500">20 AZN : 15 MB/S</option>
+                                        <option value="25.0-25500">25 AZN : 25 MB/S</option>
+                                        <option value="28.0-30500">28 AZN : 30 MB/S</option>
+
                                     </select>
                                 </div>
                             </div>

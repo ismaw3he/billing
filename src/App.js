@@ -18,6 +18,7 @@ function App() {
             <Route path={"/login"} component={LoginNew}/> 
             <UserHome />
         </Router>
+        // 1366 * 657
             // {/*<Router>*/}
             // {/*<div className="App">*/}
             // {/*    <Switch>*/}
