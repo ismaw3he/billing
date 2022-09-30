@@ -55,7 +55,7 @@ class UserEdit extends Component {
     }
 
     getSingleUser(id) {
-        fetch('http://62.212.226.11:7755/gettinguser/' + id)
+        fetch('http://94.20.229.18:6655/gettinguser/' + id)
             .then(res => res.json())
             .then(result => {
                 this.setState({
@@ -99,7 +99,7 @@ class UserEdit extends Component {
         // console.log(data)
         // Default options are marked with *
 
-        const response = await fetch("http://62.212.226.11:7755/editingmacaddress", {
+        const response = await fetch("http://94.20.229.18:6655/editingmacaddress", {
             method: 'PUT', // *GET, POST, PUT, DELETE, etc.
             headers: {
                 'Content-Type': 'application/json'

@@ -38,7 +38,7 @@ class MonitoringUser extends Component {
 
     componentDidMount() {
 
-        fetch('http://62.212.226.11:7755/gettingallusers')
+        fetch('http://94.20.229.18:6655/gettingallusers')
             .then(res => res.json())
             .then(result => {
                 let dateData = [];

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import "./style.css";
-
+import ModalFilterPayments from '../ModalFilterPayments/ModalFilterPayments';
 
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 
@@ -32,6 +32,10 @@ class MonitoringActiveUsers extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            modal: false,
+
+
+
             chartData: [],
             count: 0,
             error: null,
@@ -45,11 +49,6 @@ class MonitoringActiveUsers extends Component {
                 { name: "Deactive", value: 0 },
                 { name: "New", value: 0 },
             ],
-
-            // {
-            //     active: 0,
-            //     deactive: 0
-            // },
 
 
             ipAddress: "10.10.1.110",
@@ -68,7 +67,7 @@ class MonitoringActiveUsers extends Component {
 
     componentDidMount() {
 
-        fetch('http://62.212.226.11:7755/gettingallusers')
+        fetch('http://94.20.229.18:6655/gettingallusers')
             .then(res => res.json())
             .then(result => {
 
@@ -106,7 +105,7 @@ class MonitoringActiveUsers extends Component {
 
                 this.setState({
                     loading: false,
-                    activity:  [
+                    activity: [
                         { name: "Active", value: active },
                         { name: "Deactive", value: deactive },
                         { name: "New", value: newUsers },
@@ -115,30 +114,41 @@ class MonitoringActiveUsers extends Component {
             });
     }
 
-
+    paymentsFliter() {
+        this.setState({
+            ...this.state,
+            modal: true
+        })
+    }
     render() {
         return (
             <div className="user-list-container">
+                <ModalFilterPayments show={this.state.modal} closeModal={() => this.setState({ ...this.state, modal: false })} />
                 <div className="users-list-header-container">
                     <h3 className="users-list-header">Users Activity Monitoring (Current Month)</h3>
                     <div className='chart-info-box'>
-                        <div className='chart-color-info' style={{backgroundColor: "#398108"}}>
+                        <div className='chart-color-info' style={{ backgroundColor: "#398108" }}>
                         </div>
                         <p className='chart-statistics-info'>Active Users</p>
                     </div>
 
                     <div className='chart-info-box'>
-                        <div className='chart-color-info' style={{backgroundColor: "#8b0d0d"}}>
+                        <div className='chart-color-info' style={{ backgroundColor: "#8b0d0d" }}>
 
                         </div>
                         <p className='chart-statistics-info'>Deactive Users</p>
                     </div>
 
                     <div className='chart-info-box'>
-                        <div className='chart-color-info' style={{backgroundColor: "#196f9d"}}>
+                        <div className='chart-color-info' style={{ backgroundColor: "#196f9d" }}>
 
                         </div>
                         <p className='chart-statistics-info'>New Users with free 1 month Internet</p>
+                    </div>
+                    <div className='chart-info-box'>
+                        <div onClick={()=>this.paymentsFliter()} className='inspect'>
+                            Inspect
+                        </div>
                     </div>
                 </div>
 

@@ -4,8 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-
-
+import Modal from '../Modal/Modal';
 
 const mapStateToProps = state => {
     return {
@@ -34,6 +33,9 @@ class UsersList extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            modal: false,
+            userPaymentHistory: [],
+
             error: null,
             loading: false,
             searching: false,
@@ -58,8 +60,7 @@ class UsersList extends Component {
     }
 
     componentDidMount() {
-
-        fetch('http://62.212.226.11:7755/gettingallusers')
+        fetch('http://94.20.229.18:6655/gettingallusers')
             .then(res => res.json())
             .then(result => {
                 this.setState({
@@ -70,7 +71,7 @@ class UsersList extends Component {
     }
 
     getSingleUser(id, index) {
-        fetch('http://62.212.226.11:7755/gettinguser/' + id)
+        fetch('http://94.20.229.18:6655/gettinguser/' + id)
             .then(res => res.json())
             .then(result => {
                 // Created-Time: "21-09-2021"
@@ -95,9 +96,40 @@ class UsersList extends Component {
             });
     }
 
+    getUserPayments(id) {
+        fetch('http://94.20.229.18:6655/getUserPaymentInfo/' + id)
+            .then(res => res.json())
+            .then(result => {
+                if (result.length === 0) {
+                    this.setState({
+                        ...this.state,
+                        modal: true,
+                        userPaymentHistory: [{
+                            amount: "",
+                            date : "No payment",
+                            source:"",
+                            time:""
+                        }]
+                    })
+                } else {
+                    this.setState({
+                        ...this.state,
+                        modal: true,
+                        userPaymentHistory: result
+                    })
+                }
+            }).catch((error) => {
+                console.log("errror:")
+                console.log(error)
+            });
+    }
+
+
+
     render() {
         return (
             <div className="user-list-container">
+                <Modal paymentsList={this.state.userPaymentHistory} show={this.state.modal} closeModal={() => this.setState({ ...this.state, modal: false })} />
                 <div className="users-list-header-container">
                     <h3 className="users-list-header">Users List ({this.state.data.length})</h3>
                 </div>
@@ -125,7 +157,6 @@ class UsersList extends Component {
                                                 filtered.push(item);
                                             }
                                             return true;
-                                            // string.includes(substring)
                                         })
                                         this.setState({
                                             infoIndex: -1,
@@ -262,7 +293,9 @@ class UsersList extends Component {
                                                         <h3>Phone: </h3>
                                                         <p>{this.state.phone}</p>
                                                     </div>
-
+                                                    <div className="paqymentsInfoButton" onClick={() => this.getUserPayments(this.state.filteredData[this.state.infoIndex][0])}>
+                                                        Payments
+                                                    </div>
                                                     <Link to={"user-edit"} className={"more-button"}
                                                         onClick={() => {
                                                             this.props.onEditUser(this.state.filteredData[this.state.infoIndex][0])
@@ -270,6 +303,7 @@ class UsersList extends Component {
                                                     >
                                                         Edit
                                                     </Link>
+
 
                                                 </div>
                                             </div>
@@ -386,6 +420,9 @@ class UsersList extends Component {
                                                     <div className="info-box-col">
                                                         <h3>Phone: </h3>
                                                         <p>{this.state.phone}</p>
+                                                    </div>
+                                                    <div className="paqymentsInfoButton" onClick={() => this.getUserPayments(this.state.data[this.state.infoIndex][0])}>
+                                                        Payments
                                                     </div>
 
                                                     <Link to={"user-edit"} className={"more-button"}

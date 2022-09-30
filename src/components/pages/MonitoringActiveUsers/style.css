@@ -14,3 +14,20 @@
 .chart-statistics-info{
     color: white;
 }
+
+.inspect{
+    width: 15px;
+    width: 80px;
+    display: flex;
+    height: 26px;
+    border: 1px solid white;
+    margin: 10px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    cursor: pointer;
+    background-color: green;
+}
+.inspect:hover{
+    background-color: #265605;
+}

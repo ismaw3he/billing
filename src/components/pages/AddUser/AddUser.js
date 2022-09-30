@@ -85,7 +85,7 @@ class AddUser extends Component {
         }
         // console.log(data)
         // Default options are marked with *
-        const response = await fetch("http://62.212.226.11:7755/addinguser", {
+        const response = await fetch("http://94.20.229.18:6655/addinguser", {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             headers: {
                 'Content-Type': 'application/json'

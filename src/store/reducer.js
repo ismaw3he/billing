@@ -25,20 +25,14 @@ const initialState = {
             password: "movsum5555"
         },
         {
-            fullname: "Nicat Qehremanov",
-            username: "nicat",
-            password: "nicat095"
+            fullname: "Bayramova Gultekin",
+            username: "gultekin",
+            password: "1990"
         },
         {
             fullname: "Ferhad Alizade",
             username: "ferhad",
             password: "ferhad98765"
-        }
-        ,
-        {
-            fullname: "Murad Abbasov",
-            username: "murad",
-            password: "1488"
         }
     ],
     user: null,

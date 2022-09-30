@@ -188,10 +188,26 @@
     text-decoration: none;
     color: inherit;
 }
+.paqymentsInfoButton {
+    width: 100px;
+    height: 34px;
+    background-color: #5f9c00;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 17px;
+    text-decoration: none;
+    color: inherit;
+}
 .closed-info-box{
     height: 0px;
 }
 .more-button:hover {
     background-color: #408aaa;
 }
-
+.paqymentsInfoButton:hover {
+    background-color: #3d6203;
+}
