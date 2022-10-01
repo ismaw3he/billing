@@ -163,7 +163,7 @@ class MonitoringActiveUsers extends Component {
                                     cy="50%"
                                     labelLine={false}
                                     label
-                                    outerRadius={170}
+                                    outerRadius={130}
                                     fill="#8884d8"
                                     dataKey="value"
                                 >
