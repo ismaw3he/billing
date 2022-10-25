@@ -85,7 +85,6 @@ class UserEdit extends Component {
     }
 
     componentDidMount() {
-
         this.getSingleUser(this.props.user)
     }
 
@@ -94,6 +93,7 @@ class UserEdit extends Component {
         let data = {
             username: this.state.data.username,
             macaddress: this.state.newMacAddress,
+            admin: localStorage.getItem('account')
         }
 
         // console.log(data)

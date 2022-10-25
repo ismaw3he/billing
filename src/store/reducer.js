@@ -22,17 +22,22 @@ const initialState = {
         {
             fullname: "Movsum Nuriyev",
             username: "movsum",
-            password: "movsum5555"
+            password: "movsum1997m"
         },
         {
             fullname: "Bayramova Gultekin",
             username: "gultekin",
-            password: "1990"
+            password: "gultekin1990"
         },
         {
             fullname: "Ferhad Alizade",
             username: "ferhad",
             password: "ferhad98765"
+        },
+        {
+            fullname: "Hesenov Kenan",
+            username: "kenan",
+            password: "kenan98765"
         }
     ],
     user: null,

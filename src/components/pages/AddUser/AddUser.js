@@ -27,7 +27,7 @@ class AddUser extends Component {
                 serialnumber: "",
                 usagegroup: "İnternet",
                 internet_price: 18.0,
-                internet_speed: "10500",
+                internet_speed: "40500",
                 phone: ["+994"],
                 zona: "Dolmagöl",
                 temporarySerialNumberPrefix: "AZE"
@@ -426,11 +426,6 @@ class AddUser extends Component {
                                         <option value="39.0-10500">39 AZN : 10 MB/S</option>
                                         <option value="49.0-15500">49 AZN : 15 MB/S</option>
                                         <option value="59.0-20500">59 AZN : 20 MB/S</option>
-                                        <option value="18.0-10500">18 AZN : 10 MB/S</option>
-                                        <option value="20.0-15500">20 AZN : 15 MB/S</option>
-                                        <option value="25.0-25500">25 AZN : 25 MB/S</option>
-                                        <option value="28.0-30500">28 AZN : 30 MB/S</option>
-
                                     </select>
                                 </div>
                             </div>
